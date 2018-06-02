@@ -1,0 +1,38 @@
+<style>
+  .my-table{
+    width: 302px;
+    height: 210px;
+    border: 1px solid black;
+    margin: auto;
+}
+.keys{
+    width: 100px;
+    display: inline-block;
+    white-space: nowrap;
+    border: 1px solid black;
+}
+.inputBox{
+    display: flex;
+    justify-content: space-between;
+}
+.customStyle {
+    border-radius: 0;
+    height: 25px;
+    color: #000;
+    background-color: #fff !important;
+}
+</style>
+<div ng-app="app">
+
+  <div class="my-table">
+      <div class="inputBox">
+        <input type="text" class="form-control customStyle" readonly ng-model="vm.typedChar"/>
+        <span><button ng-click="vm.clearInput()" title="clear">C</button></span>
+        <span><button ng-click="vm.clearAllInput()"title="clear all" >X</button></span></div>
+      <span ng-repeat="key in vm.keypadMap" class="keys">
+          <button style="width:100%" class="key" ng-click="vm.handleKeypadClick($index)">{{key.key}}
+              <div ng-if="key.char">{{key.char.join(' ')}}</div>
+          </button>
+      </span>
+  </div>
+</div>
